@@ -129,7 +129,6 @@ void doStateMachine() {
         //Logic inverted by opto
         if (digitalRead(USBBusPowerPin) == LOW) {
           transitionLEDState(STATE_LED_FLASH_SLOW);
-          switchOnAudio();
           transitionTo(STATE_HW_STARTING);
         }
         break;
@@ -143,6 +142,7 @@ void doStateMachine() {
           justTransitioned = false;
         }
         if (digitalRead(audioOnOffPin) == LOW) {
+          switchOnAudio();
           transitionTo(STATE_RUNNING);
         }
         break;
